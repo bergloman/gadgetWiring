@@ -28,41 +28,47 @@ class led57_object(object):
 
         # Raspberry Pi GPIO initalization
         GPIO.setmode(GPIO.BOARD)
-        GPIO.setup(self.COL1, GPIO.OUT)
-        GPIO.setup(self.COL2, GPIO.OUT)
-        GPIO.setup(self.COL3, GPIO.OUT)
-        GPIO.setup(self.COL4, GPIO.OUT)
-        GPIO.setup(self.COL5, GPIO.OUT)
-        GPIO.setup(self.COL6, GPIO.OUT)
-        GPIO.setup(self.COL7, GPIO.OUT)
-        GPIO.setup(self.COL8, GPIO.OUT)
-        GPIO.setup(self.ROW1, GPIO.OUT)
-        GPIO.setup(self.ROW2, GPIO.OUT)
-        GPIO.setup(self.ROW3, GPIO.OUT)
-        GPIO.setup(self.ROW4, GPIO.OUT)
-        GPIO.setup(self.ROW5, GPIO.OUT)
-        GPIO.setup(self.ROW6, GPIO.OUT)
-        GPIO.setup(self.ROW7, GPIO.OUT)
-        GPIO.setup(self.ROW8, GPIO.OUT)
+        for bit in range(0, 8):
+            GPIO.setup(self.COLS[bit], GPIO.OUT)
+            GPIO.output(self.ROWS[bit], GPIO.OUT)
+        # GPIO.setup(self.COL1, GPIO.OUT)
+        # GPIO.setup(self.COL2, GPIO.OUT)
+        # GPIO.setup(self.COL3, GPIO.OUT)
+        # GPIO.setup(self.COL4, GPIO.OUT)
+        # GPIO.setup(self.COL5, GPIO.OUT)
+        # GPIO.setup(self.COL6, GPIO.OUT)
+        # GPIO.setup(self.COL7, GPIO.OUT)
+        # GPIO.setup(self.COL8, GPIO.OUT)
+        # GPIO.setup(self.ROW1, GPIO.OUT)
+        # GPIO.setup(self.ROW2, GPIO.OUT)
+        # GPIO.setup(self.ROW3, GPIO.OUT)
+        # GPIO.setup(self.ROW4, GPIO.OUT)
+        # GPIO.setup(self.ROW5, GPIO.OUT)
+        # GPIO.setup(self.ROW6, GPIO.OUT)
+        # GPIO.setup(self.ROW7, GPIO.OUT)
+        # GPIO.setup(self.ROW8, GPIO.OUT)
 
     def clear(self):
         # set all GPIO output to LOW
-        GPIO.output(self.COL1, GPIO.LOW)
-        GPIO.output(self.COL2, GPIO.LOW)
-        GPIO.output(self.COL3, GPIO.LOW)
-        GPIO.output(self.COL4, GPIO.LOW)
-        GPIO.output(self.COL5, GPIO.LOW)
-        GPIO.output(self.COL6, GPIO.LOW)
-        GPIO.output(self.COL7, GPIO.LOW)
-        GPIO.output(self.COL8, GPIO.LOW)
-        GPIO.output(self.ROW1, GPIO.LOW)
-        GPIO.output(self.ROW2, GPIO.LOW)
-        GPIO.output(self.ROW3, GPIO.LOW)
-        GPIO.output(self.ROW4, GPIO.LOW)
-        GPIO.output(self.ROW5, GPIO.LOW)
-        GPIO.output(self.ROW6, GPIO.LOW)
-        GPIO.output(self.ROW7, GPIO.LOW)
-        GPIO.output(self.ROW8, GPIO.LOW)
+        for bit in range(0, 8):
+            GPIO.output(self.COLS[bit], GPIO.LOW)
+            GPIO.output(self.ROWS[bit], GPIO.LOW)
+        # GPIO.output(self.COL1, GPIO.LOW)
+        # GPIO.output(self.COL2, GPIO.LOW)
+        # GPIO.output(self.COL3, GPIO.LOW)
+        # GPIO.output(self.COL4, GPIO.LOW)
+        # GPIO.output(self.COL5, GPIO.LOW)
+        # GPIO.output(self.COL6, GPIO.LOW)
+        # GPIO.output(self.COL7, GPIO.LOW)
+        # GPIO.output(self.COL8, GPIO.LOW)
+        # GPIO.output(self.ROW1, GPIO.LOW)
+        # GPIO.output(self.ROW2, GPIO.LOW)
+        # GPIO.output(self.ROW3, GPIO.LOW)
+        # GPIO.output(self.ROW4, GPIO.LOW)
+        # GPIO.output(self.ROW5, GPIO.LOW)
+        # GPIO.output(self.ROW6, GPIO.LOW)
+        # GPIO.output(self.ROW7, GPIO.LOW)
+        # GPIO.output(self.ROW8, GPIO.LOW)
 
     def drawRow(self, row_string, row_index):
         self.clear()
@@ -76,9 +82,7 @@ class led57_object(object):
             self.drawRow(matrix[bit], bit)
 
     def demo(self):
-        # Code sample of showing 'Pi'
         while 1:
-
             matrix = [
                 "10101101",
                 "00101101",
