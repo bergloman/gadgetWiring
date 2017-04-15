@@ -34,6 +34,7 @@ class led57_object(object):
         GPIO.output(self.ROWS[row_index], GPIO.HIGH)
         for bit in range(0, 8):
             GPIO.output(
+                # column must be set to LOW to be be lit up :)
                 self.COLS[bit], GPIO.HIGH if row_string[bit] == "0" else GPIO.LOW)
         time.sleep(self.sleeptime)
 
@@ -56,18 +57,6 @@ class led57_object(object):
                 "10000000",
             ]
             self.drawMatrix(matrix)
-
-            # self.clear()
-            # GPIO.output(self.ROWS[2], GPIO.HIGH)
-            # GPIO.output(self.COLS[0], GPIO.LOW)
-            # GPIO.output(self.COLS[1], GPIO.LOW)
-            # GPIO.output(self.COLS[2], GPIO.HIGH)
-            # GPIO.output(self.COLS[3], GPIO.LOW)
-            # GPIO.output(self.COLS[4], GPIO.LOW)
-            # GPIO.output(self.COLS[5], GPIO.LOW)
-            # GPIO.output(self.COLS[6], GPIO.LOW)
-            # GPIO.output(self.COLS[7], GPIO.HIGH)
-            # time.sleep(self.sleeptime)
 
 
 def main():
