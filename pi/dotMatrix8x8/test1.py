@@ -30,7 +30,7 @@ class led57_object(object):
         GPIO.setmode(GPIO.BOARD)
         for bit in range(0, 8):
             GPIO.setup(self.COLS[bit], GPIO.OUT)
-            GPIO.output(self.ROWS[bit], GPIO.OUT)
+            GPIO.setup(self.ROWS[bit], GPIO.OUT)
         # GPIO.setup(self.COL1, GPIO.OUT)
         # GPIO.setup(self.COL2, GPIO.OUT)
         # GPIO.setup(self.COL3, GPIO.OUT)
