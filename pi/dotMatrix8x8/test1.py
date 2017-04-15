@@ -2,8 +2,11 @@
 import RPi.GPIO as GPIO
 import time
 
-pins1 = [7, 11, 13, 15, 29, 31, 33, 35]
-pins2 = [12, 16, 18, 22, 32, 36, 38, 40]
+
+# pins1 = [7, 11, 13, 15, 29, 31, 33, 35]
+# pins2 = [12, 16, 18, 22, 32, 36, 38, 40]
+rows = [40, 18, 35, 32, 7, 33, 11, 29]
+cols = [22, 13, 15, 38, 31, 36, 16, 12]
 
 
 class led57_object(object):
@@ -12,8 +15,8 @@ class led57_object(object):
         self.sleeptime = 0.001
 
         # collect all rows and columns for easier access
-        self.ROWS = pins1
-        self.COLS = pins2
+        self.ROWS = rows
+        self.COLS = cols
 
         # Raspberry Pi GPIO initalization
         GPIO.setmode(GPIO.BOARD)
