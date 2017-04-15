@@ -34,7 +34,7 @@ class led57_object(object):
         GPIO.output(self.ROWS[row_index], GPIO.HIGH)
         for bit in range(0, 8):
             GPIO.output(
-                self.COLS[bit], GPIO.HIGH if row_string[bit] == "1" else GPIO.LOW)
+                self.COLS[bit], GPIO.HIGH if row_string[bit] == "0" else GPIO.LOW)
         time.sleep(self.sleeptime)
 
     def drawMatrix(self, matrix):
@@ -45,30 +45,29 @@ class led57_object(object):
         cntr = 0
         while cntr < 10000:
             cntr = cntr + 1
-            # matrix = [
-            #     "10101101",
-            #     "00101101",
-            #     "00001101",
-            #     "00001100",
-            #     "00101100",
-            #     "00101100",
-            #     "10101000",
-            #     "10000000",
-            # ]
-            # self.drawMatrix(matrix)
+            matrix = [
+                "10101101",
+                "00101101",
+                "00001101",
+                "00001100",
+                "00101100",
+                "00101100",
+                "10101000",
+                "10000000",
+            ]
+            self.drawMatrix(matrix)
 
-            self.clear()
-            GPIO.output(self.ROWS[2], GPIO.HIGH)
-            GPIO.output(self.COLS[0], GPIO.LOW)
-            GPIO.output(self.COLS[1], GPIO.LOW)
-            GPIO.output(self.COLS[2], GPIO.HIGH)
-            GPIO.output(self.COLS[3], GPIO.LOW)
-            GPIO.output(self.COLS[4], GPIO.LOW)
-            GPIO.output(self.COLS[5], GPIO.LOW)
-            GPIO.output(self.COLS[6], GPIO.LOW)
-            GPIO.output(self.COLS[7], GPIO.HIGH)
-            GPIO.output(self.COLS[8], GPIO.LOW)
-            time.sleep(self.sleeptime)
+            # self.clear()
+            # GPIO.output(self.ROWS[2], GPIO.HIGH)
+            # GPIO.output(self.COLS[0], GPIO.LOW)
+            # GPIO.output(self.COLS[1], GPIO.LOW)
+            # GPIO.output(self.COLS[2], GPIO.HIGH)
+            # GPIO.output(self.COLS[3], GPIO.LOW)
+            # GPIO.output(self.COLS[4], GPIO.LOW)
+            # GPIO.output(self.COLS[5], GPIO.LOW)
+            # GPIO.output(self.COLS[6], GPIO.LOW)
+            # GPIO.output(self.COLS[7], GPIO.HIGH)
+            # time.sleep(self.sleeptime)
 
 
 def main():
