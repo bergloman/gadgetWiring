@@ -1,15 +1,16 @@
 import RPi.GPIO as GPIO
 import time
 
-GPIO.setmode(GPIO.BOARD)
+pin_val=11
 
-GPIO.setup(7, GPIO.OUT)
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(pin_val, GPIO.OUT)
 
 try:
     while True:
-        GPIO.output(7, 1)
+        GPIO.output(pin_val, 1)
         time.sleep(0.0015)
-        GPIO.output(7, 0)
+        GPIO.output(pin_val, 0)
         time.sleep(2)
 
 except KeyboardInterrupt:
