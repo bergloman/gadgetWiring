@@ -1,4 +1,5 @@
 import os
+import os.path
 
 # Return CPU temperature as a character string
 def getCPUtemperature():
@@ -66,3 +67,27 @@ DISK_perc = DISK_stats[3]
 print DISK_total
 print DISK_free
 print DISK_perc
+
+now_str = datetime.now().isoformat()
+
+file_name = argv[1]
+
+
+if !os.path.exists(file_name):
+    hs = open(file_name, "w")
+    hs.write("now,cpu_temp,cpu_usage,ram_total,ram_used,ram_free,disk_total,disk_free,disk_perc\n")
+    hs.close()
+
+hs = open(file_name, "a")
+
+hs.write(now_str + ",")
+hs.write(str(CPU_temp) + ",")
+hs.write(str(CPU_usage) + ",")
+hs.write(str(RAM_total) + ",")
+hs.write(str(RAM_used) + ",")
+hs.write(str(RAM_free) + ",")
+hs.write(str(DISK_total) + ",")
+hs.write(str(DISK_free) + ",")
+hs.write(str(DISK_perc) + "\n")
+
+hs.close()
