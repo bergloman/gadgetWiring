@@ -1,4 +1,5 @@
 import os
+import sys
 import os.path
 import datetime
 
@@ -71,7 +72,7 @@ print DISK_perc
 
 now_str = datetime.datetime.now().isoformat()
 
-file_name = argv[1]
+file_name = sys.argv[1]
 
 if not(os.path.exists(file_name)):
     hs = open(file_name, "w")
