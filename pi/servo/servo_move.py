@@ -9,6 +9,7 @@
 
 import RPi.GPIO as GPIO
 import time
+import sys
 
 servoPIN = 17
 GPIO.setmode(GPIO.BCM)
@@ -19,10 +20,12 @@ p.start(2.5) # Initialization
 
 SLEEP_TIME=1.2
 
-angle=90
+angle=0
+if len(sys.argv)>=2:
+  angle=int(sys.argv[1])
 
 dc = 2.5 + 10 * (180 - angle) / 180
-print(dc)
+#print(dc)
 try:
   p.ChangeDutyCycle(dc)
   time.sleep(SLEEP_TIME)
