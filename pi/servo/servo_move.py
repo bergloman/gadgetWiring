@@ -18,11 +18,16 @@ GPIO.setup(servoPIN, GPIO.OUT)
 p = GPIO.PWM(servoPIN, 50) # GPIO 17 for PWM with 50Hz
 p.start(2.5) # Initialization
 
-SLEEP_TIME=1.2
+SLEEP_TIME = 1.2
 
-angle=0
-if len(sys.argv)>=2:
+angle = 0
+if len(sys.argv) >= 2:
   angle=int(sys.argv[1])
+else:
+  f = open("/dev/stdin")
+  fs = f.read()
+  f.close()
+  angle = int(fs)
 
 dc = 2.5 + 10 * (180 - angle) / 180
 #print(dc)
