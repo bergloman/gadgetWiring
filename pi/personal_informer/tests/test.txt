@@ -1,1 +1,1 @@
-test file for upload
+{"ts":1564941346059,"status":"ok"}
