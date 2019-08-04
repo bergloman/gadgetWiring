@@ -1,0 +1,15 @@
+from envirophat import weather
+import datetime
+
+d = datetime.datetime.utcnow().isoformat()
+
+#print(d)
+#print(weather.temperature())
+#print(weather.pressure(unit='hPa'))
+
+print("tmp=" + str(weather.temperature()))
+print("pressure=" + str(weather.pressure(unit='hPa')))
+#payload_1 = { "data_source": "temp", "ts": d, "val": weather.temperature() }
+#print(payload_1)
+#payload_2 = { "data_source": "pressure", "ts": d, "val": weather.pressure(unit='hPa') }
+#print(payload_2)

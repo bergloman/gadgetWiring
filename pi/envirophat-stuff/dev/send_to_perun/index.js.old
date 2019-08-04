@@ -1,0 +1,70 @@
+"use strict";
+
+const fs = require("fs");
+const rq = require("request");
+
+const settings = [
+    {
+        url: "http://perun.qlector.com:5001/insert",
+        users: [
+            "8025e43665864007bf829851ff75a7bc", //"11d3d13c80594cc8a4e653b87b05b9b0";
+            "3a7beee1f73e43b7bafdc68d3d2ee697",
+            "f0286809a42f4eeaa33e50bb30971d9b",
+            "f82410424d2945d1977bb1de85d5c762",
+            "75f4e33371ce40dc83a2c4e5e13ca07b",
+            "1ffc044e1e1c42fcb958433e187b8be8"
+        ],
+        pass: [
+            "00283db408ef45f5b4c0537b6ba88669",
+            "35af8e0e31f6422d8fc1b90328249257",
+            "ab807a82dbc246f09016f79642dac3f5",
+            "2048cf196c014bd6b05c029f49cbece6",
+            "b852d493d324462fa10553606cf01058",
+            "b11897fee2e34bf2824b7e66ea22dde1"
+        ]
+    },
+    {
+        url: "https://app.qlector.com/api/v1.0/ingestion/datasources",
+        user: "404a6db23ba641b58c8d451f504cdac6",
+        api_key: "646d7c86002c43f491c9aa7d14a8aef5"
+    }
+];
+const url2 = "https://app.qlector.com/api/";
+
+function post(data, i, cb) {
+    const options = {
+        json: data,
+        headers: { Authorization: "Basic " + new Buffer(users[i] + ":" + pass[i]).toString("base64") },
+        method: "POST",
+        uri: url
+    };
+    rq(options, cb);
+}
+
+function main() {
+    const lines = fs
+        .readFileSync("../sensor_state.txt", { encoding: "utf8" })
+        .split("\n");
+
+    let counter = 0;
+    for (const line of lines) {
+        if (line == "") {
+            continue;
+        }
+        const msg = JSON.parse(line);
+        //msg.data_source= "3855b128367843e28e3aab05375ed76f";
+        delete msg.data_source;
+        console.log(msg);
+        post(msg, counter++, (err, _r, b) => {
+            if (err) {
+                console.log("Error", err);
+            } else {
+                console.log("Body:", b);
+            }
+        });
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+
+main();
